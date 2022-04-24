@@ -1,0 +1,39 @@
+.watch {
+    height: 320px;
+    width: 320px;
+    border: 7px solid white;
+    box-shadow: 0px 0px 50px white;
+    border-radius: 50%;
+    margin: 50px;
+}
+
+.clock {
+    height: 300px;
+    width: 300px;
+    flex-direction: column;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+}
+
+.clock .second_hand {
+  --rotation: 0;
+    background: linear-gradient(to top, rgba(255, 0, 0, 0) 155px, red 10px);
+    top: -17px;
+    left: 50%;
+    height: 167px;
+    width: 5px;
+    position: absolute;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    border-radius: 10px 10px 10px 10px;
+}
+
+.timer {
+    font-size: 50px;
+}
+
+.date {
+    font-size: 16px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,26 @@
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + label {
+	position: relative;
+	padding-left: 23px; /* margines wewnętrzny - trzeba zrobić trochę miejsca dla naszego pola */
+}
+
+input[type=checkbox] + label::after {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0px;
+    left: 4px;
+    width: 5px;
+    height: 12px;
+    border-bottom: 3px solid black;
+    border-right: 2px solid black;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+input[type=checkbox]:checked + label::after {
+	opacity: 1;
+}
