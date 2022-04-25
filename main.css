@@ -43,9 +43,10 @@ div {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
-a:hover {
+.menu:hover {
     height: 110px
 }
 
@@ -64,8 +65,8 @@ a:hover {
 .menu:hover {
     position: relative;
     top: 35px;
-    background-color: rgb(67, 126, 128);
-    color: white;
+    background-color: white;
+    color: cadetblue;
     border: 5px solid black;
     height: 70px;
     border-radius: 50%;

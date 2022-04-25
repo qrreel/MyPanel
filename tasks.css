@@ -1,39 +1,53 @@
-.calendar, .tasks-container {
-    width: 400px;
-    min-height: 200px;
-    border: 2px solid white;
-    box-shadow: 0px 0px 20px black;
-    border-radius: 7px;
-    margin: 40px 50px 0 50px;
+.change_month {
+    padding: 0 10px;
 }
 
-.task-list {
+.calendar-container, .tasks-container {
+    width: 400px;
+    min-height: 200px;
+    border: 3px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    box-shadow: 10px 10px 20px black;
+    border-radius: 7px;
+    margin: 30px 50px 20px 50px;
+    align-items: flex-start;
+}
+
+.task-header, .calendar-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     width: 95%;
     height: 30px;
     display: flex;
     justify-content: center;
-    padding: 10px 0 3px 0;
+    padding: 10px 20px 3px 20px;
     font-size: 16px;
+    margin: 0 10px;
 }
 
-.task-header {
-    display: flex;
+.task-list, .month  {
     justify-content: start;
-    flex-basis: 45%;
+    flex-basis: 50%;
 }
 
-.add-new-task {
-    display: flex;
+.add-new-task, .year {
     justify-content: end;
-    flex-basis: 45%;
-    font-size: 20px;
+    flex-basis: 50%;
+}
+
+td {
+    border: 0px solid red;
+    width: 40px;
+    height: 7px;
+    font-size: 12px;
+    opacity: 0.7;
+    justify-content: end;
 }
 
 .tasks {
+    position: relative;
     display: flex;
-    justify-content: right;
-    align-items: flex-start;
+    align-content: flex-start;
     width: 95%;
     min-height: 170px;
     font-size: 13px;
@@ -45,15 +59,13 @@
     justify-content: start;
     align-items: center;
     padding: 5px 10px;
-    width: 90%;
+    width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 0.7;
-    
 }
 
 .one-task:hover {
     opacity: 1;
-    cursor: pointer;
 }
 
 input[type=checkbox] {
@@ -72,7 +84,7 @@ input[type=checkbox] + label {
     cursor: pointer;
 }
 
-input[type=checkbox] + label::after {
+input[type=checkbox]:checked + label::after {
     position: absolute;
     content: "";
     display: block;
@@ -84,18 +96,15 @@ input[type=checkbox] + label::after {
     border-right: 2px solid white;
     border-radius: 2px;
     transform: rotate(45deg);
-    opacity: 0;
-}
-
-input[type=checkbox]:checked + label::after {
-    opacity: 1;
 }
 
 .task {
     position: relative;
+    display: flex;
     border-radius: 3px;
-    top: -3px;
-    left: 25px;
+    width: 300px;
+    margin: 0;
+    padding: 0;
 }
 
 .new-task-container {
