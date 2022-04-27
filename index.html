@@ -15,7 +15,7 @@
             <a href="#"><span class="menu">menu 2</span></a>
             <a href="#"><span class="menu">menu 3</span></a>
             <a href="#"><span class="menu">menu 4</span></a>
-            <a href="#"><span class="menu">menu 5</span></a>
+            <a href="#"><span class="menu">Log in</span></a>
     </div>
     <div class="clock-block">
         <div class="watch">
@@ -44,8 +44,12 @@
     <div class="task-block">
         <div class="calendar-container">
             <div class="calendar-header">
-                <div class="month"><a href="#" class="change_month">&lt;</a>Month<a href="#"  class="change_month">></a></Month></div>
-                <div class="year">Year</div>
+                <div class="month">
+                    <button class="change_month">&lt;</button>
+                    Month
+                    <button class="change_month">></button>
+                </div>
+                Year
             </div>
             <div class="calendar">
                 <table>
@@ -109,8 +113,7 @@
         </div>
         <div class="tasks-container">
             <div class="task-header">
-                <div class="task-list">Task list</div>
-                <div class="add-new-task"><a href="#">+</a></div>
+                Task list<button class="add-task">+</button>              
             </div>
             <div class="tasks">
                 <div class="one-task"><input type="checkbox" name="" id="checkbox1"><label for="checkbox1"></label><span class="task">ogarnąć listę zadań w JS</span></div>
@@ -118,23 +121,16 @@
                 <div class="one-task"><input type="checkbox" name="" id="checkbox3"><label for="checkbox3"></label><span class="task">div pogodowy</span></div>
                 <div class="one-task"><input type="checkbox" name="" id="checkbox4"><label for="checkbox4"></label><span class="task">poprawić kod css</span></div>            
             </div>
+            <div class="guick-add-container"><input type="text" name="quick-add" id="quick-add" placeholder="Quick add..."><button class="quick-add-btn">+</button></div>
+        </div>
+        <div class="new-task-container">
+            <input type="text" name="new-task" id="new-task" placeholder="To do..."><button id="add-new-task">ADD</button>
         </div>
     </div>
-    <div class="new-task-container">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde nobis iste magnam. Dolores est debitis facilis nostrum, modi repudiandae, voluptatem atque recusandae tenetur fuga accusantium placeat reiciendis quasi fugit?
-    </div>
+
 
     <script src="watch.js"></script>
     <script src="weather.js"></script>
-
-    <!-- <script src="switch.js"></script>
-    <script src="object.js"></script>
-    <script src="collection.js"></script>
-    <script src="loops.js"></script>
-    <script src="profile.js"></script>
-    <script src="mathFraction.js"></script>
-    <script src="ifElse.js"></script>
-    <script src="anonymusFunction.js"></script>
-    <script src="functions.js"></script> -->
+    <script src="task.js"></script>
  </body>
 </html>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
 body {
-    background: linear-gradient(to bottom, black 120px, cadetblue);
+    background: linear-gradient(black 120px, cadetblue);
     min-height: 100vh;
     color: white;
     font-family: 'Dosis', sans-serif;
@@ -10,7 +10,19 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start ;
+    align-items: flex-start;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
 }
 
 .clock-block, .task-block {
@@ -41,11 +53,6 @@ div {
     background-color: white;
     }
 
-a {
-    text-decoration: none;
-    color: white;
-}
-
 .menu:hover {
     height: 110px
 }
@@ -67,7 +74,7 @@ a {
     top: 35px;
     background-color: white;
     color: cadetblue;
-    border: 5px solid black;
+    border: 5px solid transparent;
     height: 70px;
     border-radius: 50%;
 }

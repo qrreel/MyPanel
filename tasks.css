@@ -1,5 +1,9 @@
 .change_month {
-    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.add-task {
+    margin: 0;
 }
 
 .calendar-container, .tasks-container {
@@ -14,25 +18,19 @@
     align-items: flex-start;
 }
 
+.tasks-container {
+    padding-bottom: 10px;
+}
+
 .task-header, .calendar-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     width: 95%;
     height: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding: 10px 20px 3px 20px;
     font-size: 16px;
     margin: 0 10px;
-}
-
-.task-list, .month  {
-    justify-content: start;
-    flex-basis: 50%;
-}
-
-.add-new-task, .year {
-    justify-content: end;
-    flex-basis: 50%;
 }
 
 td {
@@ -66,6 +64,7 @@ td {
 
 .one-task:hover {
     opacity: 1;
+    cursor: default;
 }
 
 input[type=checkbox] {
@@ -107,13 +106,37 @@ input[type=checkbox]:checked + label::after {
     padding: 0;
 }
 
+.guick-add-container {
+    width: 95%;
+}
+
+#quick-add{
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 75%;
+    height: 20px;
+    border: 2px solid white;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    box-shadow: 10px 10px 20px black;
+    font-size: 12px;
+    margin: 5px 10px;
+    padding: 3px 10px;
+}
+
+.quick-add-btn {
+    color: white;
+    margin: 5px 10px;
+}
+
 .new-task-container {
-    display: none;
-    position: absolute;
-    top: 30%;
+    display: block;
+    position: relative;
     width: 400px;
     height: 250px;
-    background-color: rgba(34, 62, 62, 0.97);
+    background-color: rgba(103, 121, 121, 0.7);
     border: 2px solid white;
     border-radius: 7px;
 }
