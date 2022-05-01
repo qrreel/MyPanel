@@ -108,6 +108,9 @@ input[type=checkbox]:checked + label::after {
 
 .guick-add-container {
     width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px 0 25px;
 }
 
 #quick-add{
@@ -115,28 +118,19 @@ input[type=checkbox]:checked + label::after {
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid black;
     border-radius: 3px;
-    width: 75%;
+    width: 300px;
     height: 20px;
     border: 2px solid white;
     border-top: 1px solid white;
     border-left: 1px solid white;
     box-shadow: 10px 10px 20px black;
     font-size: 12px;
-    margin: 5px 10px;
-    padding: 3px 10px;
 }
 
-.quick-add-btn {
-    color: white;
-    margin: 5px 10px;
+.add-btn {
+    opacity: 0.5;
 }
 
-.new-task-container {
-    display: block;
-    position: relative;
-    width: 400px;
-    height: 250px;
-    background-color: rgba(103, 121, 121, 0.7);
-    border: 2px solid white;
-    border-radius: 7px;
+.add-btn:hover {
+    opacity: 1;
 }
