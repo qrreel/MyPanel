@@ -20,11 +20,12 @@ const myTime = () => {
 
 setInterval(myTime, 1000)
 
-// -----------------------------------------------------------------------------
+// -----------
 
-const date = document.querySelector('.date')
+const watchDate = document.querySelector('.date')
+const taskDate = document.querySelector('.task-date')
 
-const months = {
+const watchMonths = {
     0: "Jan",
     1: "Feb",
     2: "Mar",
@@ -45,11 +46,13 @@ const myDate = () => {
     var mon = time.getMonth();
     var year = time.getYear();
 
-    var monthName = months[mon];
+    var monthName = watchMonths[mon];
 
     var shortYear = year - 100;
 
-    date.textContent = day + " " + monthName + " " + shortYear
+    watchDate.textContent = day + " " + monthName + " " + shortYear
+
+    taskDate.textContent = day + " " + monthName
 };
 
 setInterval(myDate, 1000)

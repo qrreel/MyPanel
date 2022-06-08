@@ -1,0 +1,120 @@
+.new-header {
+    margin: 0 30px;
+    justify-content: center;
+    animation: showOpacity 0.5s;
+}
+
+.month-block, .year-block {
+    font-size: 16px;
+    width: 120px;
+    justify-content: space-between;
+}
+
+.month, .year,.change-month-back, .change-month-fwd, .change-year-back, .change-year-fwd {
+    animation: showOpacity 0.5s;
+}
+
+.change-month-back, .change-month-fwd, .change-year-back, .change-year-fwd {
+    font-size: 20px;
+}
+
+.calendar, .new-event {
+    padding: 10px;
+    width: 300px;
+    height: 160px;
+    font-size: 13px;
+    align-items: flex-start;
+}
+
+.week-days {
+    height: 15px;
+    width: 300px;
+    justify-content: space-around;
+    font-size: 10px;
+    padding: 5px 10px;
+    cursor: default;
+}
+
+.week-day {
+    width: 30px;
+}
+
+.days {
+    padding: 5px 10px;
+    align-items: flex-start;
+}
+
+.days div:nth-child(7n) {
+    color: rgb(235, 100, 100);
+}
+
+.sunday {
+    color: rgb(235, 100, 100);
+    font-weight: bold;
+}
+
+.day, .today, .prev-month, .next-month {
+    width: 28px;
+    padding: 1px 5px;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: default;
+    animation: showScale 0.2s;
+}
+
+.prev-month, .next-month {
+    opacity: 0.3;
+}
+
+.month-in-block, .year-in-block, .prev-decade, .next-decade {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.month-in-block {
+    transition: all 0.2s ease;
+}
+
+.year-in-block, .prev-decade, .next-decade {
+    animation: showScale 0.1s;
+}
+
+.today, .day:hover, .year-in-block:hover, .month-in-block:hover, .prev-decade:hover, .next-decade:hover {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+.day {
+    transition: all 0.5s ease-in;
+}
+
+.current-mth-yr {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);;
+}
+
+.back-today, .back-to-calendar, .clear-button {
+    height: 20px;
+    width: 70px;
+    align-content: center;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    transition: all 0.5s ease;
+    animation: showOpacity 0.5s;
+}
+
+.back-today {
+    transform: rotate(90deg);
+}
+
+.back-to-calendar, .clear-button {
+    font-size: 8px;
+}

@@ -1,0 +1,62 @@
+.fade-out {
+    opacity: 0;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.scale0{
+    transform: scale(0%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+@keyframes showOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showScale {
+    0% {
+        transform: scale(0%);
+    }
+    100% {
+        transform: scale(100%);
+    }
+}
+
+@keyframes showTask {
+    0% {
+        height: 0px;
+        transform: scaleY(0%);
+        opacity: 0;
+        padding: 0;
+        margin: 0;
+    }
+    100% {
+        transform: scaleY(100%);
+    }
+}
+
+@keyframes showAddTaskInput {
+    0% {
+        justify-content: end;
+        height: 0px;
+        width: 0px;
+        transform: scaleY(10%);
+        transform: scaleX(10%);
+        opacity: 0;
+        padding: 0;
+        margin: 0;
+    }
+    60% {
+        transform: scaleX(100%);
+        transform: scaleY(10%);
+    }
+    100% {
+        transform: scaleY(100%);
+    }
+}

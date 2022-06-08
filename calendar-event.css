@@ -1,0 +1,6 @@
+.event-header {
+    text-transform: uppercase;
+    font-size: 12px;
+    animation: showOpacity;
+    animation-duration: 0.75s;
+}

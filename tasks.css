@@ -1,70 +1,41 @@
-.change_month {
-    margin: 0 10px;
-}
-
-.add-task {
-    margin: 0;
-}
-
-.calendar-container, .tasks-container {
-    width: 400px;
-    min-height: 200px;
-    border: 3px solid white;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    box-shadow: 10px 10px 20px black;
-    border-radius: 7px;
-    margin: 30px 50px 20px 50px;
-    align-items: flex-start;
-}
-
-.tasks-container {
-    padding-bottom: 10px;
-}
-
-.task-header, .calendar-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    width: 95%;
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px 3px 20px;
-    font-size: 16px;
-    margin: 0 10px;
-}
-
-td {
-    border: 0px solid red;
-    width: 40px;
-    height: 7px;
-    font-size: 12px;
-    opacity: 0.7;
-    justify-content: end;
-}
-
 .tasks {
     position: relative;
     display: flex;
-    align-content: flex-start;
-    width: 95%;
-    min-height: 170px;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    min-height: 220px;
     font-size: 13px;
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .one-task {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    width: 100%;
+    width: 90%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0.7;
+    opacity: 0.6;
+    cursor: default;
 }
 
 .one-task:hover {
     opacity: 1;
-    cursor: default;
+}
+
+.move-holder {
+    position: absolute;
+    left: -3px;
+    display: none;
+    font-size: 10px;
+    opacity: 0.5;
+    cursor: all-scroll;
+}
+
+.one-task:hover .move-holder {
+    display: inline;
 }
 
 input[type=checkbox] {
@@ -83,11 +54,11 @@ input[type=checkbox] + label {
     cursor: pointer;
 }
 
-input[type=checkbox]:checked + label::after {
+input[type=checkbox] + label::after {
     position: absolute;
     content: "";
     display: block;
-    top: -5px;
+    top: -6px;
     left: 4px;
     width: 5px;
     height: 12px;
@@ -95,42 +66,77 @@ input[type=checkbox]:checked + label::after {
     border-right: 2px solid white;
     border-radius: 2px;
     transform: rotate(45deg);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+input[type=checkbox]:checked + label::after {
+    opacity: 1;
 }
 
 .task {
     position: relative;
     display: flex;
-    border-radius: 3px;
-    width: 300px;
-    margin: 0;
-    padding: 0;
+    width: 75%;
+}
+
+.task-complete {
+    color: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.delete-button, .edit-button {
+    font-size: 10px;
+    padding: 0 5px;
+    color: inherit;
+}
+
+.delete-button {
+    font-size: 15px;
+}
+
+.delete-button:hover {
+    color: rgba(240, 0, 0, 0.7);
 }
 
 .guick-add-container {
-    width: 95%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 25px 0 25px;
+    padding: 0px 10px;
+    opacity: 1;
+    transition: all 0.2s ease;
 }
 
-#quick-add{
+#quick-add {
     color: white;
     background-color: rgba(255, 255, 255, 0.3);
-    border: 1px solid black;
     border-radius: 3px;
     width: 300px;
     height: 20px;
-    border: 2px solid white;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 10px 10px 20px black;
     font-size: 12px;
+    padding: 2px 10px;
 }
 
-.add-btn {
+#quick-add:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.quick-add-btn {
     opacity: 0.5;
+    font-size: 16px;
+    width: 50px;
 }
 
-.add-btn:hover {
+.quick-add-btn:hover {
     opacity: 1;
 }
