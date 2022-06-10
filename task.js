@@ -57,7 +57,7 @@ const newTaskLine = (addedTask) => {
 
     const editTaskButton = document.createElement('button');
     editTaskButton.classList.add("edit-button");
-    editTaskButton.innerHTML = "edit";
+    editTaskButton.innerHTML = "&#8230";
 
     const deleteTaskButton = document.createElement('button');
     deleteTaskButton.classList.add("delete-button");

@@ -23,11 +23,24 @@
             <a href="#"><span class="menu">Link</span></a>
     </div> -->
     <div class="left-container">
-        <div class="watch-container">
-            <div class="clock">
-                <div class="second_hand"></div>
-                <div class="timer">GODZINA</div>
-                <div class="date">DATA</div>
+        <div class="tasks-container">
+            <div class="task-header">
+                <div class="task-date">DATE</div>
+                <div class="taks-list">
+                    <button class="change-tl-back">&#8249</button>
+                    <div class="task-lists">Task list</div>
+                    <button class="change-tl-fwd">&#8250</button>
+                </div>
+                <div class="task-btns">
+                    <div class="add-list-btn">ADD</div>
+                    <div class="delete-task-list">DELETE</div>
+                    <span class="list-word">list</span>
+                </div>
+            </div>
+            <div class="tasks"></div>
+            <div class="guick-add-container">
+                <input type="text" name="quick-add" id="quick-add" placeholder="Enter simple task...">
+                <button class="quick-add-btn">+</button>
             </div>
         </div>
     </div>
@@ -59,33 +72,24 @@
                 <div class="days"></div>
             </div>
         </div>
-        <div class="tasks-container">
-            <div class="task-header">
-                <div class="task-date">DATE</div>
-                <div class="taks-list">
-                    <button class="change-tl-back">&#8249</button>
-                    <div class="task-lists">Task list</div>
-                    <button class="change-tl-fwd">&#8250</button>
-                </div>
-                <div class="task-btns">
-                    <div class="add-list-btn">ADD</div>
-                    <div class="delete-task-list">DELETE</div>
-                    <span class="list-word">list</span>
-                </div>
+        <div class="watch-container">
+            <div class="clock">
+                <div class="second_hand"></div>
+                <div class="timer">GODZINA</div>
+                <div class="date">DATA</div>
             </div>
-            <div class="tasks"></div>
-            <div class="guick-add-container">
-                <input type="text" name="quick-add" id="quick-add" placeholder="Enter simple task...">
-                <button class="quick-add-btn">+</button>
-            </div>
+        </div>
+        <div class="contact">
+            <img src="GitHub-Mark/PNG/GitHub-Mark-Light-32px.png" alt="GitHub logo" class="github-logo">
+            <a href="https://github.com/qrreel/MyPanel" target="_blank" class="github">qrreel/MyPanel</a>
+            <span class="mail">@ <a href="mailto:rafalwas88@gmail.com">rafalwas88@gmail.com</a></span>
+            <span class="phone">phone: 602 367 854</span>
         </div>
     </div>
     <div class="alert">
         <button class="alert-no">NO</button>
         <button class="alert-yes">YES</button>
     </div>
-
-
 
     <script src="watch.js"></script>
     <script src="weather.js"></script>

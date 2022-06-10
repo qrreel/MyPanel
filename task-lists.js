@@ -139,6 +139,8 @@ const removeList = () => {
 };
 
 const clearList = () => {
+    let lists = JSON.parse(localStorage.getItem("lists"));
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
     let filteredTasks = tasks.filter(task => task.list !== lists[actualList]);
     localStorage.setItem("tasks", JSON.stringify(filteredTasks));
     recreateList()

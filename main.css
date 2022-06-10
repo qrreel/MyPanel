@@ -4,6 +4,10 @@
     font-family: 'Dosis', sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: row;
@@ -13,8 +17,7 @@ body {
     background: linear-gradient(black, cadetblue);
     background-repeat: no-repeat;
     color: white;
-    padding: 0px 20px;
-    margin: 20px;
+    padding: 10px 40px;
 }
 
 div {
@@ -35,7 +38,7 @@ button {
 
 .left-container, .right-container {
     flex-direction: column;
-    min-width: 400px;
+    align-items: flex-start;
 }
 
 .calendar-container, .tasks-container {
@@ -89,4 +92,31 @@ button {
 
 .alert-yes:hover, .alert-no:hover {
     border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.contact {
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+}
+
+.github-logo {    
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.github, .mail, .phone {
+    padding: 5px;
+}
+
+.mail, .phone {
+    text-align: start;
+    width: 100%;
+}
+
+.contact a:hover {
+    text-decoration: underline;
 }

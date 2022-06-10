@@ -4,7 +4,7 @@
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
-    min-height: 220px;
+    min-height: 530px;
     font-size: 13px;
     padding-top: 5px;
     padding-bottom: 10px;
@@ -91,7 +91,7 @@ input[type=checkbox]:checked + label::after {
 }
 
 .delete-button, .edit-button {
-    font-size: 10px;
+    font-size: 14px;
     padding: 0 5px;
     color: inherit;
 }
