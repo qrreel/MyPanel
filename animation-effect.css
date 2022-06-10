@@ -11,21 +11,19 @@
 }
 
 @keyframes showOpacity {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes borderBottom {
+    0% {color: rgba(255, 255, 255, 1);}
+    50% {color: rgba(255, 255, 255, 0.3);}
+    100% {color: rgba(255, 255, 255, 1);}
 }
 
 @keyframes showScale {
-    0% {
-        transform: scale(0%);
-    }
-    100% {
-        transform: scale(100%);
-    }
+    0% {transform: scale(0%);}
+    100% {transform: scale(100%);}
 }
 
 @keyframes showTask {

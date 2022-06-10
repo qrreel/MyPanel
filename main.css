@@ -60,3 +60,33 @@ button {
     font-size: 16px;
     padding: 0 15px 3px 15px;
 }
+
+
+.alert {
+    position: fixed;
+    top: 40%;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    justify-content: space-around;
+    line-height: 25px;
+    display: none;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.alert-yes, .alert-no {
+    width: 40%;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.alert-yes:hover, .alert-no:hover {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}

@@ -14,7 +14,13 @@
 }
 
 .task-lists {
+    display: block;
     cursor: default;
+    font-size: 15px;
+}
+
+.task-lists::first-letter {
+    text-transform: uppercase;
 }
 
 .task-lists, .change-tl-back, .change-tl-fwd {

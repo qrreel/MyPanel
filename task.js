@@ -1,6 +1,8 @@
-const quickAddContainer = document.querySelector('.guick-add-container')
-const quickAdd = document.querySelector('#quick-add');
 const taskList = document.querySelector('.tasks');
+
+const quickAddContainer = document.querySelector('.guick-add-container');
+const quickAdd = document.querySelector('#quick-add');
+const quickAddBtn = document.querySelector('.quick-add-btn');
 
 let tasks = JSON.parse(localStorage.getItem("tasks"));
 
@@ -94,13 +96,40 @@ const taskComplete = (input) => {
 taskList.addEventListener("change", e => {
     let tasks = JSON.parse(localStorage.getItem("tasks"));
 
-    if (e.target.tagName.toLowerCase() === 'input') {
+    if (e.target.type === 'checkbox') {
         const selectedTask = tasks.find(task => task.id === e.target.id);
         selectedTask.complete = e.target.checked;
 
         localStorage.setItem("tasks", JSON.stringify(tasks));
     };
     taskComplete(e.target);
+});
+
+taskList.addEventListener("dblclick", e => {
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    if (e.target.tagName.toLowerCase() === 'span') {
+        const selectedTask = tasks.filter(task => task.newTask === e.target.innerHTML);
+
+        e.target.innerHTML = "";
+        const textEdit = document.createElement('input');
+        textEdit.setAttribute('id', 'text-editor-input');
+        textEdit.setAttribute('name', 'text-editor-input');
+        textEdit.setAttribute('type', 'text');
+        textEdit.value = `${selectedTask[0].newTask}`;
+        e.target.appendChild(textEdit);
+        textEdit.focus();
+
+
+        textEdit.addEventListener("keypress", e => {
+            if(e.keyCode === 13 && textEdit.value !== "") {
+                let changedTask = tasks.filter(task => task.id === selectedTask[0].id);
+                changedTask[0].newTask = textEdit.value
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                recreateTasks();
+            };
+        });
+        textEdit.addEventListener('focusout', recreateTasks);
+    };
 });
 
 const deleteTask = (id) => {
@@ -119,18 +148,17 @@ const deleteTask = (id) => {
     recreateTasks();
 };
 
-const deletedTasksFromRemovedLists = () => {
+const replaceTasksList = (targetList) => {
     let tasks = JSON.parse(localStorage.getItem("tasks"));
     let lists = JSON.parse(localStorage.getItem("lists"));
     let actualList = JSON.parse(localStorage.getItem("lists.actualList"));
 
-    let deletedList = lists[actualList]
-    let deletedTaskList = tasks.filter(task => task.list === deletedList);
+    let selectedList = lists[actualList]
+    let seletedTaskList = tasks.filter(task => task.list === selectedList);
     
-    deletedTaskList.forEach(task => {
-        task.list = lists[1]
-    })
-
+    seletedTaskList.forEach(task => {
+        task.list = targetList
+    });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
