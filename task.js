@@ -38,9 +38,9 @@ const newTaskLine = (addedTask) => {
     const div = document.createElement('li');
     div.classList.add('one-task');
 
-    const moveHolder = document.createElement('button');
-    moveHolder.classList.add('move-holder');
-    moveHolder.innerHTML = "&#8942&#8942"
+    // const drag = document.createElement('button');
+    // drag.classList.add('move-holder');
+    // drag.innerHTML = "&#8942&#8942"
 
     const input = document.createElement('input');
     input.setAttribute('type', 'checkbox');
@@ -64,7 +64,7 @@ const newTaskLine = (addedTask) => {
     deleteTaskButton.innerHTML = "&#215";
 
     taskList.appendChild(div);
-    div.appendChild(moveHolder)
+    // div.appendChild(drag)
     div.appendChild(input);
     div.appendChild(label);
     div.appendChild(span);

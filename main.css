@@ -5,7 +5,7 @@
 }
 
 html {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -44,7 +44,7 @@ button {
 .calendar-container, .tasks-container {
     align-items: flex-start;
     width: 400px;
-    min-height: 250px;
+    min-height: 220px;
     border: 3px solid white;
     border-bottom: 1px solid white;
     border-right: 1px solid white;
@@ -96,10 +96,11 @@ button {
 
 .contact {
     justify-content: flex-start;
-    width: 100%;
+    width: 90%;
     font-size: 13px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 10px 20px;
+    margin: 10px;
 }
 
 .github-logo {    
