@@ -157,14 +157,25 @@ const deleteTask = (id) => {
 const showTasks = (tasks) => {
     taskList.style.textDecoration = "none";
 
+    tasks.sort(function(a, b) {
+        return b.id - a.id;
+    });
+
+    tasks.sort(function(a, b) {
+        if(a.todoDate > b.todoDate) {
+            return 1
+        } else {
+            return -1
+        }
+    });
+
+    tasks.sort(function(a, b) {
+        return b.priority - a.priority;
+    });
+
     tasks.forEach(task => {
         newTaskLine(task)
     });
-
-    let sortByDate = tasks.map(task => task.todoDate);
-    let sortByPriority = tasks.map(task => task.priority);
-    sortByDate.sort((a, b) => a.localeCompare(b));
-    sortByPriority.sort((a, b) => b - a);
 };
 
 const recreateTasks = () => {
@@ -180,7 +191,7 @@ const recreateTasks = () => {
         showTasks(activeTask);
     } else if(actualList === 1) {
         showTasks(filteredTasks);
-        taskList.firstElementChild.children[2].style.textDecoration = "line-through rgba(255, 255, 255, 0.3)";
+        taskList.style.textDecoration = "line-through rgba(255, 255, 255, 0.3)";
     } else {
         showTasks(filteredTasks);
     };
@@ -188,4 +199,4 @@ const recreateTasks = () => {
     replaceDoneTasks(0, 0, null);
     replaceDoneTasks(-2, 1, addDayAsValue(0));
     removeOldTaskFromTrash();
-};
+}
