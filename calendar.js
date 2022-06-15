@@ -68,13 +68,6 @@ const renderCalendar = () => {
   };
   
   for(let i = 1; i <= daysInMonth; i++) {
-    
-    function addZero(n) {
-      if (n < 10) {
-          n = "0" + n
-      };
-      return n;
-    };
 
     let mth = addZero(date.getMonth() + 1);
     let yr = date.getFullYear();

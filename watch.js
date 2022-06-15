@@ -1,4 +1,11 @@
-const clock = document.querySelector('.timer')
+const clock = document.querySelector('.timer');
+
+const addZero = (i) => {
+    if (i < 10) {
+        i = "0" + i
+    };
+    return i;
+};
 
 const myTime = () => {
     let time = new Date();
@@ -7,13 +14,6 @@ const myTime = () => {
     
     hr = addZero(hr)
     min = addZero(min)
-
-    function addZero(i) {
-        if (i < 10) {
-            i = "0" + i
-        };
-        return i;
-    }
 
     clock.textContent = hr + ":" + min
 };
