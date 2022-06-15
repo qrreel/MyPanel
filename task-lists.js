@@ -15,8 +15,7 @@ const addListInput = document.createElement('input');
 const cancelBtn = document.createElement('div');
 
 let lists = JSON.parse(localStorage.getItem("lists"));
-let actualList = JSON.parse(localStorage.getItem("lists.actualList"));
-// let actualList = 2;
+let actualList = 2;
 
 if(lists === null) {
     const listsCollection = ["Done", "Trash", "Tasks list"];
@@ -110,6 +109,14 @@ deleteTasksList.onclick = () => {
     };
 };
 
+const clearList = () => {
+    let lists = JSON.parse(localStorage.getItem("lists"));
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let filteredTasks = tasks.filter(task => task.list !== lists[actualList]);
+    localStorage.setItem("tasks", JSON.stringify(filteredTasks));
+    recreateList()
+};
+
 const showAlert = (toRemove) => {
     deleteAlert.style.display = "flex";
     deleteAlert.appendChild(deleteAlertNo);
@@ -125,25 +132,6 @@ const showAlert = (toRemove) => {
         toRemove();
         deleteAlert.style.display = "none";
     };
-};
-
-const removeList = () => {
-    let lists = JSON.parse(localStorage.getItem("lists"));
-    taskLists.innerHTML = lists[actualList - 1];
-    filteredLists = lists.filter(list => list !== lists[actualList]);
-    actualList -= 1
-
-    replaceTasksList(lists[1]);
-    localStorage.setItem("lists", JSON.stringify(filteredLists));
-    recreateList();
-};
-
-const clearList = () => {
-    let lists = JSON.parse(localStorage.getItem("lists"));
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
-    let filteredTasks = tasks.filter(task => task.list !== lists[actualList]);
-    localStorage.setItem("tasks", JSON.stringify(filteredTasks));
-    recreateList()
 };
 
 const clearListAlert = () => {

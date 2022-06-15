@@ -18,11 +18,19 @@ quickAdd.addEventListener("keypress", e => {
     if(e.keyCode === 13) {
         if(quickAdd.value.length !== 0){
             const newTask = quickAdd.value;
+            let todoDate = addDayAsValue(0);
+            let completeDate = null;
+            let trashDate = null;
+            let priority = 0
             const addedTask = {
                 id: Date.now().toString(),
                 newTask,
                 complete: false,
                 list: lists[actualList],
+                todoDate,
+                completeDate,
+                trashDate,
+                priority,
             };
             tasks.push(addedTask)
             newTaskLine(addedTask);
@@ -78,13 +86,6 @@ const newTaskLine = (addedTask) => {
     taskComplete(input);
 };
 
-const showTasks = (tasks) => {
-    tasks.forEach(task => {
-        newTaskLine(task)
-    });
-    taskList.style.color = "white";
-};
-
 const taskComplete = (input) => {
     if(input.checked === false) {
         input.parentElement.classList.remove('task-complete');
@@ -99,7 +100,11 @@ taskList.addEventListener("change", e => {
     if (e.target.type === 'checkbox') {
         const selectedTask = tasks.find(task => task.id === e.target.id);
         selectedTask.complete = e.target.checked;
-
+        if(e.target.checked === true) {
+            selectedTask.completeDate = addDayAsValue(0);
+        } else {
+            selectedTask.completeDate = null;
+        };
         localStorage.setItem("tasks", JSON.stringify(tasks));
     };
     taskComplete(e.target);
@@ -142,24 +147,24 @@ const deleteTask = (id) => {
     } else {
         let deletedTask = tasks.filter(task => task.id === id);
         deletedTask[0].list = lists[1];
+        deletedTask[0].trashDate = addDayAsValue(0);
         
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
     recreateTasks();
 };
 
-const replaceTasksList = (targetList) => {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
-    let lists = JSON.parse(localStorage.getItem("lists"));
-    let actualList = JSON.parse(localStorage.getItem("lists.actualList"));
+const showTasks = (tasks) => {
+    taskList.style.textDecoration = "none";
 
-    let selectedList = lists[actualList]
-    let seletedTaskList = tasks.filter(task => task.list === selectedList);
-    
-    seletedTaskList.forEach(task => {
-        task.list = targetList
+    tasks.forEach(task => {
+        newTaskLine(task)
     });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    let sortByDate = tasks.map(task => task.todoDate);
+    let sortByPriority = tasks.map(task => task.priority);
+    sortByDate.sort((a, b) => a.localeCompare(b));
+    sortByPriority.sort((a, b) => b - a);
 };
 
 const recreateTasks = () => {
@@ -169,14 +174,18 @@ const recreateTasks = () => {
     taskList.innerHTML = "";
     
     let filteredTasks = tasks.filter(task => task.list === lists[actualList]);
-    let activeTask = tasks.filter(task => task.list !== lists[1]);
+    let activeTask = tasks.filter(task => task.list !== lists[0] && task.list !== lists[1] && task.todoDate <= addDayAsValue(0));
 
     if(actualList === 2) {
-        showTasks(activeTask)
+        showTasks(activeTask);
     } else if(actualList === 1) {
-        showTasks(filteredTasks)
-        taskList.style.color = "rgba(255, 255, 255, 0.3)";
+        showTasks(filteredTasks);
+        taskList.firstElementChild.children[2].style.textDecoration = "line-through rgba(255, 255, 255, 0.3)";
     } else {
-        showTasks(filteredTasks)
+        showTasks(filteredTasks);
     };
+
+    replaceDoneTasks(0, 0, null);
+    replaceDoneTasks(-2, 1, addDayAsValue(0));
+    removeOldTaskFromTrash();
 };

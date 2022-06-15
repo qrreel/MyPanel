@@ -158,7 +158,7 @@ input:focus::-webkit-input-placeholder {
 
 #text-editor-input:focus {
     outline: none;
-    animation: borderBottom 1.5s infinite;
+    animation: editTask 1.5s infinite;
 }
 
 .clear-all {
