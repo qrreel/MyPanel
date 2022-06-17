@@ -10,14 +10,17 @@ html {
 
 body {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
     background: linear-gradient(black, cadetblue);
     background-repeat: no-repeat;
     color: white;
-    padding: 10px 40px;
+    margin: 30px;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 250px 220px;
 }
 
 div {
@@ -36,27 +39,37 @@ button {
     font-size: 16px;
 }
 
-.left-container, .right-container {
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 .calendar-container, .tasks-container {
-    align-items: flex-start;
     width: 400px;
     min-height: 220px;
-    border: 3px solid white;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    box-shadow: 10px 10px 20px black;
-    border-radius: 7px;
-    margin: 20px;
-    padding: 10px 15px 15px 15px;
+    margin: 10px 20px;
+    padding: 0px 15px 15px 15px;
+}
+
+.tasks-container {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: flex-start;
+    justify-self: center;
+}
+
+.calendar-container, .watch-container, .contact-container {
+    display: grid;
+    grid-column: 1;
+    justify-items: center;
+    justify-self: center;
+    align-self: flex-start;
+}
+
+.watch-container {
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .task-header, .calendar-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    width: 100%;
+    width: 400px;
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -95,26 +108,27 @@ button {
 }
 
 .contact {
-    justify-content: flex-start;
-    width: 90%;
+    justify-content: end;
+    width: 100%;
     font-size: 13px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 10px 20px;
-    margin: 10px;
+    margin-top: 30px;
 }
 
-.github-logo {    
+.github-logo {
     padding: 5px;
     width: 20px;
     height: 20px;
 }
 
 .github, .mail, .phone {
+    text-justify: center;
     padding: 5px;
 }
 
 .mail, .phone {
-    text-align: start;
+    text-align: end;
     width: 100%;
 }
 
