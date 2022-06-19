@@ -68,9 +68,7 @@ const renderCalendar = () => {
   };
   
   for(let i = 1; i <= daysInMonth; i++) {
-    date.getDate(date.setDate(i));
     const day = document.createElement('div');
-    day.setAttribute('id', dayAsString(date, 0));
     day.setAttribute('class', "day");
     day.innerHTML = i;
 
@@ -102,7 +100,7 @@ const renderCalendar = () => {
 };
 
 prevMonth.onclick = () => {
-  month, date.setMonth(date.getMonth() - 1);
+  date.setMonth(date.getMonth() - 1);
   renderCalendar();
 };
 
@@ -124,6 +122,7 @@ nextYear.onclick = () => {
 backBtn.onclick = () => {
   date = new Date()
   renderCalendar();
+  recreateTasks(new Date())
 }
 
 renderCalendar();
