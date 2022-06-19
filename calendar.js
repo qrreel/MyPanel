@@ -68,21 +68,21 @@ const renderCalendar = () => {
   };
   
   for(let i = 1; i <= daysInMonth; i++) {
-
-    let mth = addZero(date.getMonth() + 1);
-    let yr = date.getFullYear();
-
-    let dayId = addZero(i) + "/" + mth.toString() + "/" +  yr.toString();
-
+    date.getDate(date.setDate(i));
     const day = document.createElement('div');
-    day.setAttribute('id', dayId);
+    day.setAttribute('id', dayAsString(date, 0));
     day.setAttribute('class', "day");
     day.innerHTML = i;
 
     daysContainer.appendChild(day);
 
     day.onclick = () => {
-      makeNewEvent(dayId)
+      actualList = 2;
+      taskLists.innerHTML = lists[actualList];
+      localStorage.setItem("lists.actualList", JSON.stringify(actualList));
+
+      date.getDate(date.setDate(i));
+      recreateTasks(date);
     }
 
     if(i === new Date().getDate()
@@ -98,11 +98,6 @@ const renderCalendar = () => {
     day.innerHTML = next;
 
     daysContainer.appendChild(day);
-  };
-
-  month.onclick = () => {
-    date.setFullYear(new Date().getFullYear());
-    showMonths();
   };
 };
 

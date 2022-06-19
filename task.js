@@ -1,3 +1,4 @@
+const taskDate = document.querySelector('.task-date')
 const taskList = document.querySelector('.tasks');
 
 const quickAddContainer = document.querySelector('.guick-add-container');
@@ -18,7 +19,7 @@ quickAdd.addEventListener("keypress", e => {
     if(e.keyCode === 13) {
         if(quickAdd.value.length !== 0){
             const newTask = quickAdd.value;
-            let todoDate = addDayAsValue(0);
+            let todoDate = dayAsString(new Date(), 0);
             let completeDate = null;
             let trashDate = null;
             let priority = 0
@@ -101,7 +102,7 @@ taskList.addEventListener("change", e => {
         const selectedTask = tasks.find(task => task.id === e.target.id);
         selectedTask.complete = e.target.checked;
         if(e.target.checked === true) {
-            selectedTask.completeDate = addDayAsValue(0);
+            selectedTask.completeDate = dayAsString(new Date(), 0);
         } else {
             selectedTask.completeDate = null;
         };
@@ -130,10 +131,10 @@ taskList.addEventListener("dblclick", e => {
                 let changedTask = tasks.filter(task => task.id === selectedTask[0].id);
                 changedTask[0].newTask = textEdit.value
                 localStorage.setItem("tasks", JSON.stringify(tasks));
-                recreateTasks();
+                recreateTasks(new Date());
             };
         });
-        textEdit.addEventListener('focusout', recreateTasks);
+        textEdit.addEventListener('focusout', recreateTasks(new Date()));
     };
 });
 
@@ -147,11 +148,21 @@ const deleteTask = (id) => {
     } else {
         let deletedTask = tasks.filter(task => task.id === id);
         deletedTask[0].list = lists[1];
-        deletedTask[0].trashDate = addDayAsValue(0);
+        deletedTask[0].trashDate = dayAsString(new Date(), 0);
         
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
-    recreateTasks();
+    recreateTasks(new Date());
+};
+
+const dayAsString = (day, timeDifference) => {
+    const xDay = new Date(day);
+
+    const clientTimezoneOffset = new Date().getTimezoneOffset()/60;
+    xDay.setHours(xDay.getHours() - clientTimezoneOffset);
+
+    xDay.setDate(xDay.getDate() + timeDifference);
+    return xDay.toISOString().slice(0, 10);
 };
 
 const showTasks = (tasks) => {
@@ -178,25 +189,34 @@ const showTasks = (tasks) => {
     });
 };
 
-const recreateTasks = () => {
+const recreateTasks = (day) => {
     let tasks = JSON.parse(localStorage.getItem("tasks"));
     let lists = JSON.parse(localStorage.getItem("lists"));
     let actualList = JSON.parse(localStorage.getItem("lists.actualList"));
     taskList.innerHTML = "";
+
+    replaceDoneTasks(0, 0, null);
+    replaceDoneTasks(-2, 1, dayAsString(new Date(), 0));
+    removeOldTaskFromTrash();
+
+    let currentDay = new Date().getDate() + " " + watchMonths[new Date().getMonth()]
+    let activeDay = day.getDate() + " " + watchMonths[day.getMonth()]
+    taskDate.innerHTML = activeDay
     
     let filteredTasks = tasks.filter(task => task.list === lists[actualList]);
-    let activeTask = tasks.filter(task => task.list !== lists[0] && task.list !== lists[1] && task.todoDate <= addDayAsValue(0));
+    let activeTask = tasks.filter(task => task.list !== lists[0] && task.list !== lists[1] && task.todoDate <= dayAsString(new Date(), 0));
+    let oneDayTasks = tasks.filter(task => task.todoDate === dayAsString(day, 0))
 
     if(actualList === 2) {
-        showTasks(activeTask);
+        if(activeDay === currentDay) {
+            showTasks(activeTask);
+        } else {
+            showTasks(oneDayTasks);
+        }
     } else if(actualList === 1) {
         showTasks(filteredTasks);
-        taskList.style.textDecoration = "line-through rgba(255, 255, 255, 0.3)";
+        taskList.style.textDecoration = "line-through 2px red"
     } else {
         showTasks(filteredTasks);
     };
-
-    replaceDoneTasks(0, 0, null);
-    replaceDoneTasks(-2, 1, addDayAsValue(0));
-    removeOldTaskFromTrash();
 }

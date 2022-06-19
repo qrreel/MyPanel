@@ -23,7 +23,6 @@ setInterval(myTime, 1000)
 // -----------
 
 const watchDate = document.querySelector('.date')
-const taskDate = document.querySelector('.task-date')
 
 const watchMonths = {
     0: "Jan",
@@ -44,15 +43,13 @@ const myDate = () => {
     var time = new Date();
     var day = time.getDate();
     var mon = time.getMonth();
-    var year = time.getYear();
+    var year = time.getFullYear();
 
     var monthName = watchMonths[mon];
 
-    var shortYear = year - 100;
+    var shortYear = year % 1000;
 
     watchDate.textContent = day + " " + monthName + " " + shortYear
-
-    taskDate.textContent = day + " " + monthName
 };
 
 setInterval(myDate, 1000)

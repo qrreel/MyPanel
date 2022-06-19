@@ -173,7 +173,7 @@ const recreateList = () => {
         quickAddContainer.appendChild(quickAddBtn);
     };
     localStorage.setItem("lists.actualList", JSON.stringify(actualList));
-    recreateTasks();
+    recreateTasks(new Date());
 };
 
 recreateList();
