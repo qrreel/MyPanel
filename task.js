@@ -1,5 +1,6 @@
 const taskDate = document.querySelector('.task-date')
 const taskList = document.querySelector('.tasks');
+const priorityMark = document.querySelector('.priority')
 
 const quickAddContainer = document.querySelector('.guick-add-container');
 const quickAdd = document.querySelector('#quick-add');
@@ -59,6 +60,9 @@ const newTaskLine = (addedTask) => {
    
     const label = document.createElement('label');
     label.setAttribute('for', addedTask.id);
+
+    const priorityMark = document.createElement('div')
+    priorityMark.classList.add('priority')
     
     const span = document.createElement('span');
     span.classList.add("task");
@@ -76,6 +80,7 @@ const newTaskLine = (addedTask) => {
     // div.appendChild(drag)
     div.appendChild(input);
     div.appendChild(label);
+    label.appendChild(priorityMark)
     div.appendChild(span);
     div.appendChild(editTaskButton);
     div.appendChild(deleteTaskButton);
@@ -85,6 +90,7 @@ const newTaskLine = (addedTask) => {
     };
 
     taskComplete(input);
+    taskPriority(addedTask.priority, priorityMark)
 };
 
 const taskComplete = (input) => {
@@ -110,6 +116,18 @@ taskList.addEventListener("change", e => {
     };
     taskComplete(e.target);
 });
+
+const taskPriority = (priority, priorityMark) => {
+    if(priority === 3) {
+        priorityMark.style.borderColor = "red"
+    } else if (priority === 2) {
+        priorityMark.style.borderColor = "orangered"
+    } else if (priority === 1) {
+        priorityMark.style.borderColor = "orange"
+    } else {
+        priorityMark.style.borderColor = "transparent"
+    };
+};
 
 taskList.addEventListener("dblclick", e => {
     let tasks = JSON.parse(localStorage.getItem("tasks"));
